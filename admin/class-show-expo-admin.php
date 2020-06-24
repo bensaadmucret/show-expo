@@ -170,8 +170,6 @@ class Show_Expo_Admin
         $post_row = $wpdb->get_row(
             $wpdb->prepare("SELECT * from {$wpdb->prefix}posts WHERE ID =%d", 1)
         );
-        
-        var_dump($post_row);
     }
     
     /**
