@@ -32,6 +32,8 @@ class Show_Expo_Activator
      */
     public function activate()
     {
+        flush_rewrite_rules();
+
         $table_query = "CREATE TABLE IF NOT EXISTS `{$this->wp_owt_tbl_books()}` ( 
                 `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(150) NULL , 
                 `amount` INT(11) NULL , 
@@ -46,7 +48,6 @@ class Show_Expo_Activator
 
         require_once(ABSPATH. 'wp-admin'. DIRECTORY_SEPARATOR .'includes'. DIRECTORY_SEPARATOR . 'upgrade.php');
         dbDelta($table_query);
-        flush_rewrite_rules();
     }
     /**
      * prefix dynamiquement la table

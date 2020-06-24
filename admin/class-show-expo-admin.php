@@ -173,4 +173,52 @@ class Show_Expo_Admin
         
         var_dump($post_row);
     }
+    
+    /**
+    * Creates a new custom post type
+    *
+    * @since 1.0.0
+    * @access public
+    * @uses register_post_type()
+    */
+    public static function new_cpt_rdm_quote()
+    {
+        $cap_type = 'post';
+        $plural = 'Les expostans';
+        $single = 'Un exposant';
+        $cpt_name = 'rdm-quote';
+        $opts['can_export'] = true;
+        $opts['capability_type'] = $cap_type;
+        $opts['description'] = '';
+        $opts['exclude_from_search'] = false;
+        $opts['has_archive'] = false;
+        $opts['hierarchical'] = false;
+        $opts['map_meta_cap'] = true;
+        $opts['menu_icon'] = 'dashicons-businessman';
+        $opts['menu_position'] = 25;
+        $opts['public'] = true;
+        $opts['publicly_querable'] = true;
+        $opts['query_var'] = true;
+        $opts['register_meta_box_cb'] = '';
+        $opts['rewrite'] = false;
+        $opts['show_in_admin_bar'] = true;
+        $opts['show_in_menu'] = true;
+        $opts['show_in_nav_menu'] = true;
+
+        $opts['labels']['add_new'] = esc_html__("Add New {$single}", 'wisdom');
+        $opts['labels']['add_new_item'] = esc_html__("Add New {$single}", 'wisdom');
+        $opts['labels']['all_items'] = esc_html__($plural, 'wisdom');
+        $opts['labels']['edit_item'] = esc_html__("Edit {$single}", 'wisdom');
+        $opts['labels']['menu_name'] = esc_html__($plural, 'wisdom');
+        $opts['labels']['name'] = esc_html__($plural, 'wisdom');
+        $opts['labels']['name_admin_bar'] = esc_html__($single, 'wisdom');
+        $opts['labels']['new_item'] = esc_html__("New {$single}", 'wisdom');
+        $opts['labels']['not_found'] = esc_html__("No {$plural} Found", 'wisdom');
+        $opts['labels']['not_found_in_trash'] = esc_html__("No {$plural} Found in Trash", 'wisdom');
+        $opts['labels']['parent_item_colon'] = esc_html__("Parent {$plural} :", 'wisdom');
+        $opts['labels']['search_items'] = esc_html__("Search {$plural}", 'wisdom');
+        $opts['labels']['singular_name'] = esc_html__($single, 'wisdom');
+        $opts['labels']['view_item'] = esc_html__("View {$single}", 'wisdom');
+        register_post_type(strtolower($cpt_name), $opts);
+    }
 }
